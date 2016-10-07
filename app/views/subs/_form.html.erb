@@ -1,0 +1,16 @@
+<form class="" action="<%= url %>" method="post">
+  <%= auth_form %>
+  <input type="hidden" name="_method" value="<%= action %>">
+
+  <label for="title">Title:</label>
+  <input type="text" name="sub[title]" value="<%= sub.title %>">
+
+  <br>
+
+  <label for="description">Description:</label>
+  <input type="text" name="sub[description]" value="<%= sub.description %>">
+
+  <br>
+
+  <input type="submit" value="Submit">
+</form>

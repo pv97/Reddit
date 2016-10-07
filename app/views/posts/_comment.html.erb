@@ -1,0 +1,25 @@
+<li>
+  <%= comment.user.username %> - <%= comment.comment %>
+
+  <% if flash["nc#{comment.id}".to_sym] %>
+
+    <h3>Post a reply to comment</h3>
+    <form class="" action="<%= post_comments_url(post_id) %>" method="post">
+      <%= auth_form %>
+      <input type="hidden" name="comment[parent_id]" value="<%=comment.id%>">
+      <textarea name="comment[comment]" value=""></textarea>
+
+      <input type="submit" value="Reply">
+    </form>
+
+  <% else %>
+    <%= button_to "reply", nested_create_post_comment_url(comment.post_id,comment.id), method: :get %>
+  <% end %>
+  <%  %>
+  <br>
+  <ul>
+  <% @comments[comment.id].each do |child| %>
+    <%= render "comment", comment:child, post_id:post_id %>
+  <% end %>
+  </ul>
+</li>

@@ -1,0 +1,20 @@
+<h1><%= @post.title %></h1>
+
+<h2><%= @post.url %></h2>
+
+<h2><%= @post.content %></h2>
+
+<h3>Post a comment</h3>
+<form class="" action="<%= post_comments_url(@post.id) %>" method="post">
+  <%= auth_form %>
+  <textarea name="comment[comment]" value=""></textarea>
+
+  <input type="submit" value="Reply">
+</form>
+<!-- includes(:child_comments).includes(:user). -->
+<ul>
+
+<% @comments[0].each do |comment| %>
+  <%= render "comment", post_id:@post.id, comment:comment %>
+<% end %>
+</ul>
